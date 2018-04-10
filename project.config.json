@@ -1,0 +1,56 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.7.2",
+	"appid": "wx026b7698d91e0904",
+	"projectname": "bis_fleamarket",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "detail8",
+					"pathName": "pages/detail/detail",
+					"query": "index=8"
+				},
+				{
+					"id": 2,
+					"name": "my",
+					"pathName": "pages/my/my",
+					"query": "index=8"
+				},
+				{
+					"id": 2,
+					"name": "sign",
+					"pathName": "pages/sign/sign",
+					"query": "title=我是诚实&time=2017-11-17"
+				},
+				{
+					"id": -1,
+					"name": "activity",
+					"pathName": "pages/activity/activity",
+					"query": "index=8"
+				}
+			]
+		}
+	}
+}

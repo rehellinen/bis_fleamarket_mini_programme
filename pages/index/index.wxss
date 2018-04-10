@@ -1,0 +1,38 @@
+.container{
+  background-color: rgb(248, 246, 247);
+  min-height: 100vh;
+}
+
+.top-image{
+  width: 750rpx;
+  height: 450rpx;
+}
+
+.setting{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top: 25rpx;
+  right: 25rpx;
+}
+
+.bookmarks{
+  position: fixed;
+  height: 110rpx;
+  width: 55rpx;
+  top: 450rpx;
+  left: 40rpx;
+}
+
+.icon-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.icon-container image{
+  height: 200rpx;
+  width: 200rpx;
+  margin-left: 116rpx;
+  margin-top: 65rpx;
+}

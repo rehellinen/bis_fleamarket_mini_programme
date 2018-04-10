@@ -1,0 +1,12 @@
+<view class="container">
+  <image src='/images/setting.png' class='setting' bindtap='toSetting'></image>
+  <image src='/images/top_image.jpg' class='top-image'></image>
+  <image src='/images/bookmarks.png' class='bookmarks'></image>
+  
+  <view class='icon-container'>    
+    <image src='/images/goods.png' bindtap='toGoods'></image>
+    <image src='/images/order.png' bindtap='toOrder'></image>
+    <image src='/images/income.png' bindtap='toIncome'></image>
+    <image src='/images/decorate.png' bindtap='toDecoration'></image>
+  </view>
+</view>

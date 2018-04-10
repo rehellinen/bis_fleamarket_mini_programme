@@ -1,0 +1,9 @@
+.container{
+  color: #6D6D6D;
+  font-family: MicroSoft Yahei;
+  font-size: 18px;
+}
+
+.disabled{
+    pointer-events: none;
+}

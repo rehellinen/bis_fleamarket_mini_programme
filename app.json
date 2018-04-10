@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/welcome/welcome",
+    "pages/goods/goods",
+    "pages/order/order",
+    "pages/income/income",
+    "pages/decoration/decoration",
+    "pages/register/register",
+    "pages/setting/setting"
+  ],
+  "window": {
+    "navigationBarTitleText": "易乎老板",
+    "navigationBarTextStyle": "#FFFFFF",
+    "navigationBarBackgroundColor": "#a9936e",
+    "backgroundColor": "#f5f5f5",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false
+  }
+}
