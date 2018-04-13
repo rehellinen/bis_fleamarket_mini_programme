@@ -28,7 +28,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 5,
 			"list": [
 				{
 					"id": 0,
@@ -59,6 +59,12 @@
 					"name": "register",
 					"pathName": "pages/register/register",
 					"query": "type=seller"
+				},
+				{
+					"id": -1,
+					"name": "order",
+					"pathName": "pages/order/order",
+					"query": ""
 				}
 			]
 		}

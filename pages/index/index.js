@@ -1,11 +1,19 @@
-// pages/index/index.js
+import { Token } from '../../utils/token.js'
+let token = new Token()
+
 Page({
   data: {
-  
+    loadingHidden: false
   },
 
   onLoad: function (options) {
-  
+    token.verify( () => {
+      let type = wx.getStorageSync('type')
+      this.setData({
+        loadingHidden: true,
+        type: type
+      })
+    })
   },
 
   toSetting(event){

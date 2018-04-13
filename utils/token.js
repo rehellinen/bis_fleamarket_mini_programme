@@ -7,13 +7,14 @@ class Token {
     this.openidUrl = Config.restUrl + 'token/openid'
   }
 
-  verify() {
+  verify(cb) {
     let token = wx.getStorageSync('token')
     if (!token) {
       this.getTokenFromServer()
     } else {
       this._verifyFromServer(token)
     }
+    cb && cb()
   }
 
   // 从服务器获取Token
@@ -28,7 +29,9 @@ class Token {
             code: res.code
           },
           success(res) {
+            console.log(res)
             wx.setStorageSync('token', res.data.data.token)
+            wx.setStorageSync('type', res.data.data.type)
             cb && cb(res)
           }
         })

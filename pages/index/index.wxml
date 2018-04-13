@@ -1,12 +1,18 @@
-<view class="container">
-  <image src='/images/setting.png' class='setting' bindtap='toSetting'></image>
-  <image src='/images/top_image.jpg' class='top-image'></image>
-  <image src='/images/bookmarks.png' class='bookmarks'></image>
+<view class='loading-container' hidden="{{loadingHidden}}">
+  <image src='/images/theme/loading.gif'></image>
+</view>
+
+
+<view class="container" hidden="{{!loadingHidden}}">
+  <image src='/images/icon/setting.png' class='setting' bindtap='toSetting'></image>
+  <image src='/images/theme/top_image.jpg' class='top-image'></image>
+  <image src='/images/icon/bookmarks.png' class='bookmarks'></image>
   
   <view class='icon-container'>    
-    <image src='/images/goods.png' bindtap='toGoods'></image>
-    <image src='/images/order.png' bindtap='toOrder'></image>
-    <image src='/images/income.png' bindtap='toIncome'></image>
-    <image src='/images/decorate.png' bindtap='toDecoration'></image>
+    <image src='/images/icon/goods.png' bindtap='toGoods'></image>
+    <image src='/images/icon/order.png' bindtap='toOrder'></image>
+    <image src='/images/icon/income.png' bindtap='toIncome'></image>
+    <image src='/images/icon/decorate.png' bindtap='toDecoration' 
+    hidden="{{type == 'seller'}}"></image>
   </view>
 </view>

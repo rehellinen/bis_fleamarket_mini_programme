@@ -1,4 +1,6 @@
-// pages/register/register.js
+import { RegisterModel } from './register-model.js'
+let register = new RegisterModel()
+
 Page({
   data: {
   
@@ -17,6 +19,17 @@ Page({
   },
 
   formSubmit(event){
-    console.log(event.detail.value)
+    let data = event.detail.value
+    let url = ''
+    if (this.data.type == '商 家'){
+      url = 'shop'
+    }else{
+      url = 'seller'
+    }
+    register.register(url, data, (res) => {
+      wx.redirectTo({
+        url: '/pages/index/index',
+      })
+    })   
   }
 })
