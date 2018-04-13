@@ -1,66 +1,32 @@
-// pages/order/order.js
+import { OrderModel } from '../order/order-model.js'
+let order = new OrderModel()
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    page: 1,
+    order: [],
+    hasMore: true
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-  
+    // this._loadOrder()
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  onReachBottom() {
+    if (this.data.hasMore) {
+      this.data.page++
+      this._loadOrder()
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  _loadOrder() {
+    order.getOrder(this.data.page, (res) => {
+      this.data.order.push.apply(this.data.order, res)
+      this.setData({
+        order: this.data.order
+      })
+    }, (res) => {
+      this.data.hasMore = false
+    })
   }
 })

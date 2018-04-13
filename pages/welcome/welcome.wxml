@@ -1,2 +1,12 @@
-<!--pages/welcome/welcome.wxml-->
-<text>pages/welcome/welcome.wxml</text>
+<image src="/images/theme/background.jpg" class="background"></image>
+
+<view class='button-container'>
+  <view class='button' bindtap='toRegister' data-type='shop'>
+    <text class='title'>自营商品</text>
+    <text class='detail'>（全新合法产品，可不限于普通产品）</text>
+  </view>
+  <view class='button' bindtap='toRegister' data-type='seller'>
+    <text class='title'>二手商品</text>
+    <text class='detail'>（会经过相关审核，保证质量过关）</text>
+  </view>
+</view>
