@@ -1,9 +1,10 @@
 import { Config } from './config.js'
 
 class Token {
-  constructor(){
+  constructor() {
     this.verifyUrl = Config.restUrl + 'token/verify'
     this.tokenUrl = Config.restUrl + 'token/seller'
+    this.openidUrl = Config.restUrl + 'token/openid'
   }
 
   verify() {
@@ -49,6 +50,35 @@ class Token {
         if (!valid) {
           that.getTokenFromServer()
         }
+      }
+    })
+  }
+
+  // 判断OpenID是否存在
+  verifyOpenID() {
+    let that = this
+    wx.login({
+      success(res) {
+        wx.request({
+          url: that.openidUrl,
+          method: "POST",
+          data: {
+            code: res.code
+          },
+          success(res) {
+            if (res.statusCode == 404) {
+              // 处理用户未注册的情况
+              wx.redirectTo({
+                url: '/pages/welcome/welcome',
+              })
+            }else{
+              // 处理用户已注册的情况
+              wx.redirectTo({
+                url: '/pages/index/index',
+              })
+            }
+          }
+        })
       }
     })
   }

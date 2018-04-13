@@ -1,0 +1,3 @@
+<view class='loading-container'>
+  <image src='/images/theme/loading.gif'></image>
+</view>
