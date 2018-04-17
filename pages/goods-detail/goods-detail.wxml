@@ -1,6 +1,6 @@
 <view class='container detail-container'>
-  <image src='/images/theme/photo.png' class='photo-image'></image>
-  <form bindsubmit="formSubmit">
+  <image src='{{imageUrl}}' class='photo-image' bindtap='uploadImage'></image>
+  <form bindsubmit="submit">
     <view class="section">
       <text>名称：</text>
       <input name="name" auto-focus value='{{info.name}}' />

@@ -47,6 +47,33 @@ class GoodsModel extends Base {
 
     this.request(params)
   }
+
+  addGoods(data, cb, ecb){
+    console.log(data)
+    let params = {
+      url: 'goods',
+      type: 'POST',
+      data,
+      callBack(res) {
+        cb && cb(res)
+      },
+      eCallBack(res) {
+        ecb && ecb(res)
+      }
+    }
+    this.request(params)
+  }
+
+  // 获取自营商品详情
+  getGoodsDetail(url, cb) {
+    let params = {
+      url: url,
+      callBack: function (data) {
+        cb && cb(data);
+      }
+    }
+    this.request(params)
+  }
 }
 
 export { GoodsModel }

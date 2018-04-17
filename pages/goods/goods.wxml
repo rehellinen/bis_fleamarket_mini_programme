@@ -3,6 +3,10 @@
 </view>
 
 <view class="goods-container" hidden="{{!loadingHidden}}">
+  <view class='icon-container' bindtap='toAdd'>
+    <text class='icon'>+</text>
+  </view>
+
   <view class='text-container'>
     <text>管 理 商 品</text>
   </view>

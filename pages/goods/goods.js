@@ -80,5 +80,12 @@ Page({
   isLoadAll(event) {
     let that = this
     app.isLoadAll(that)
+  },
+
+  toAdd(event){
+    let id = event.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/goods-detail/goods-detail?id=0',
+    })
   }
 })
