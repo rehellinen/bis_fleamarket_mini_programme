@@ -17,8 +17,9 @@ Page({
   },
 
   toSetting(event){
+    let type = wx.getStorageSync('type')
     wx.navigateTo({
-      url: '/pages/setting/setting',
+      url: '/pages/register/register?type=' + type,
     })
   },
 

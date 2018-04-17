@@ -5,7 +5,7 @@ class RegisterModel extends Base{
     super()
   }
 
-  register(url, data, cb){
+  register(url, data, cb, ecb){
     let that = this
     wx.login({
       success(res){
@@ -16,13 +16,54 @@ class RegisterModel extends Base{
           type: "POST",
           callBack(res){
             cb && cb(res)
+          },
+          eCallBack(res){
+            ecb && ecb(res)
+          }
+        }
+
+        that.request(params)
+      }
+    })    
+  }
+
+  getInfo(cb){
+    let uid = wx.getStorageSync('uid')
+    let url = ''
+    if (wx.getStorageSync('type') == 'shop'){
+      url = 'shop/'
+    }else{
+      url = 'seller/'
+    }
+    let params = {
+      url: url + uid,
+      callBack(res){
+        cb && cb(res)
+      }
+    }
+    this.request(params)
+  }
+
+  editInfo(url, data, cb, ecb) {
+    let that = this
+    wx.login({
+      success(res) {
+        data.code = res.code
+        let params = {
+          url: url,
+          data: data,
+          type: "POST",
+          callBack(res) {
+            cb && cb(res)
+          },
+          eCallBack(res) {
+            ecb && ecb(res)
           }
         }
 
         that.request(params)
       }
     })
-    
   }
 }
 

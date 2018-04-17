@@ -17,6 +17,19 @@ Page({
     this._loadOrder()
   },
 
+  onShow(){
+    let isHasNew = wx.getStorageSync('updateOrder')
+    if(isHasNew){
+      this.data.order = []
+      this.data.unpaid = []
+      this.data.paid = []
+      this.data.delivered = []
+      this.data.completed = []
+      this._loadOrder()
+      wx.setStorageSync('updateOrder', false)
+    }
+  },
+
   onReachBottom() {
     if (this.data.hasMore) {
       this.data.page++
@@ -39,7 +52,7 @@ Page({
           this.data.delivered.push(res[i])
         }// 已完成
         else if (res[i].status == 5) {
-          this.data.delivered.push(res[i])
+          this.data.completed.push(res[i])
         }
       }
       this.data.order.push.apply(this.data.order, res)
@@ -47,7 +60,8 @@ Page({
         order: this.data.order,
         unpaid: this.data.unpaid,
         paid: this.data.paid,
-        delivered: this.data.delivered
+        delivered: this.data.delivered,
+        completed: this.data.completed
       })
     }, (res) => {
       this.data.hasMore = false

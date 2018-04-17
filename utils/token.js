@@ -30,6 +30,7 @@ class Token {
           },
           success(res) {
             console.log(res)
+            wx.setStorageSync('uid', res.data.data.uid)
             wx.setStorageSync('token', res.data.data.token)
             wx.setStorageSync('type', res.data.data.type)
             cb && cb(res)

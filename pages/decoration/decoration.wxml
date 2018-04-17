@@ -1,2 +1,11 @@
-<!--pages/decoration/decoration.wxml-->
-<text>pages/decoration/decoration.wxml</text>
+<view class='order-container' hidden="{{loadingHidden}}">
+  <view class='text-container'>
+    <text>预 览</text>
+  </view>
+  <view class='image-top-container'>
+    <image-top></image-top>
+  </view>  
+  <view class='upload-container'>
+    123
+  </view>
+</view>

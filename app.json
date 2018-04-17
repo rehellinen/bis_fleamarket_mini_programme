@@ -8,7 +8,8 @@
     "pages/income/income",
     "pages/decoration/decoration",
     "pages/register/register",
-    "pages/setting/setting"
+    "pages/setting/setting",
+    "pages/order-detail/order-detail"
   ],
   "window": {
     "navigationBarTitleText": "易乎老板",

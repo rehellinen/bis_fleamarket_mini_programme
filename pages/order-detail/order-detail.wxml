@@ -1,0 +1,22 @@
+<view class='loading-container' hidden="{{!loadingHidden}}">
+  <image src='/images/theme/loading.gif'></image>
+</view>
+
+<view class='container' hidden="{{loadingHidden}}">
+  <order-info time="{{order.create_time}}" order_no="{{order.order_no}}" status="{{order.status}}"></order-info>
+
+  <seller-info wechat="{{order.buyer_id.weixin}}" phone="{{order.buyer_id.telephone}}" 
+  name="{{order.buyer_id.name}}">
+  </seller-info>
+
+  <order-goods-list goods="{{order.snap_items}}" bind:loaded="isLoadAll"></order-goods-list>
+
+  <!--结算-->
+  <view class="order-accounts">
+    <view class="total-account">
+      付款合计：￥{{order.total_price}}
+    </view>    
+    <view class="pay" bindtap='deliver' wx:if='{{order.status == 2}}' data-id='{{order.id}}'>去发货</view>
+  </view>
+  <!--结算-->
+</view>
