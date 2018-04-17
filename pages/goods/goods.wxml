@@ -1,2 +1,6 @@
-<!--pages/goods/goods.wxml-->
-<text>pages/goods/goods.wxml</text>
+<view class="goods-container">
+  <view class='text-container'>
+    <text>管 理 商 品</text>
+  </view>
+  <switch-tab tab="{{['在售中', '已下架']}}"></switch-tab>
+</view>

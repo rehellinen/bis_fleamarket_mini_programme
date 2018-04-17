@@ -9,10 +9,11 @@ Page({
   onLoad: function (options) {
     let str = ''
     let operation = ''
-
+    let major = false
     // 根据跳转页面时传入的参数判断是商家还是二手卖家
     if (options.type == 'shop'){
       str = '注 册 商 家'
+      major = true
     }else{
       str = '注 册 二 手 卖 家'
     }
@@ -22,7 +23,8 @@ Page({
       operation = '修 改 信 息'
       register.getInfo( (res) => {
         this.setData({
-          info: res
+          info: res,
+          major
         })
       })
     }

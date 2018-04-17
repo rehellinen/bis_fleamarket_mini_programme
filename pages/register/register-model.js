@@ -65,6 +65,23 @@ class RegisterModel extends Base{
       }
     })
   }
+
+  editImage(type, path, cb){
+    wx.uploadFile({
+      url: this.baseUrl + 'image',
+      filePath: path,
+      name: 'image',
+      header: {
+        token: wx.getStorageSync('token')
+      },
+      formData: {
+        type: type
+      },
+      success(res){
+        cb && cb(res)
+      }
+    })
+  }
 }
 
 export { RegisterModel }

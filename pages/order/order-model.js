@@ -7,9 +7,9 @@ class OrderModel extends Base {
   }  
 
   // 获取订单
-  getOrder(page, cb, ecb) {
+  getOrder(status, page, cb, ecb) {
     let params = {
-      url: 'order',
+      url: 'order/' + status,
       callBack(res) {
         cb && cb(res)
       },
@@ -17,7 +17,8 @@ class OrderModel extends Base {
         ecb && ecb(res)
       },
       data: {
-        page: page
+        page: page,
+        size: 12
       }
     }
     this.request(params)

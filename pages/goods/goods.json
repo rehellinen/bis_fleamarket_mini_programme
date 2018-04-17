@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "switch-tab": "../component/switch-tab/switch-tab"
+  }
+}

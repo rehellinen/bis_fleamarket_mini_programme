@@ -37,6 +37,13 @@ form {
   padding: 20rpx 0;
 }
 
+.section textarea {
+  font-size: 28rpx;
+  color: #7c7c7c;
+  padding: 20rpx 0;
+  height: 95rpx
+}
+
 .submit-btn {
   margin: 30rpx;
 }
@@ -44,4 +51,8 @@ form {
 .counts-icon {
   height: 20rpx;
   width: 20rpx;
+}
+
+.major-text{
+  width: 100rpx;
 }

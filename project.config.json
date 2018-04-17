@@ -28,7 +28,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 9,
 			"list": [
 				{
 					"id": 0,
@@ -55,10 +55,10 @@
 					"query": "index=8"
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "register",
 					"pathName": "pages/register/register",
-					"query": "type=seller"
+					"query": "type=shop"
 				},
 				{
 					"id": -1,
@@ -76,6 +76,18 @@
 					"id": -1,
 					"name": "decoration",
 					"pathName": "pages/decoration/decoration",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "income",
+					"pathName": "pages/income/income",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "goods",
+					"pathName": "pages/goods/goods",
 					"query": ""
 				}
 			]

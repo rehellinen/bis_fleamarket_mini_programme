@@ -24,6 +24,30 @@
 }
 
 .upload-container{
-  margin-top: 20rpx;
   background-color: white;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.image-btn{
+  margin-top: 20rpx;
+  width: 280rpx;
+}
+
+.image-btn text{
+  font-size: 32rpx;
+  color: #989898;  
+}
+
+.submit-btn{
+  width: 655rpx;
+  margin-top: 20rpx;
+}
+
+.submit-btn text{
+  font-size: 34rpx;
+  color: #989898;  
 }

@@ -20,7 +20,7 @@
 
     <view class="section">
       <text>宿舍：</text>
-      <input type="number" name="dormitory" value='{{info.number}}' />
+      <input type="number" name="dormitory" value='{{info.dormitory}}' />
     </view>
 
     <view class="section">
@@ -37,6 +37,11 @@
       <text>支付宝：</text>
       <input name="zhifubao" value='{{info.zhifubao}}' />
     </view>
+
+    <view class="section" wx:if="{{major}}">
+      <text class='major-text'>主营：</text>
+      <textarea name="major" value='{{info.major}}'/>
+    </view>    
     <button class="submit-btn" formType="submit">提交</button>
   </form>
 </view>

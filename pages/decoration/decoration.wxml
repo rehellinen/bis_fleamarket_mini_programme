@@ -3,9 +3,11 @@
     <text>预 览</text>
   </view>
   <view class='image-top-container'>
-    <image-top></image-top>
+    <image-top top_image="{{back}}" avatar="{{avatar}}" name="{{info.name}}" quote="{{info.major}}"></image-top>
   </view>  
   <view class='upload-container'>
-    123
+    <button class="image-btn" bindtap="uploadImage" data-type='avatar'><text>上传头像</text></button>
+    <button class="image-btn" bindtap="uploadImage" data-type='back'><text>上传背景图</text></button>
+    <button class="submit-btn" bindtap='submit'><text>保存</text></button>
   </view>
 </view>
