@@ -1,0 +1,30 @@
+<view class='container detail-container'>
+  <image src='/images/theme/photo.png' class='photo-image'></image>
+  <form bindsubmit="formSubmit">
+    <view class="section">
+      <text>名称：</text>
+      <input name="name" auto-focus value='{{info.name}}' />
+    </view>
+
+    <view class="section">
+      <text>价格：</text>
+      <input name="price" value='{{info.price}}' />
+    </view>
+
+    <view class="section">
+      <text>数量：</text>
+      <input name="quantity" value='{{info.quantity}}' />
+    </view>    
+
+    <view class="section">
+      <text class='major-text'>描述：</text>
+      <textarea name="description" value='{{info.description}}'/>
+    </view>   
+
+    <view class="section">
+      <text class='major-text'>小标题：</text>
+      <textarea name="subtitle" value='{{info.subtitle}}'/>
+    </view> 
+    <button class="submit-btn" formType="submit">提交</button>
+  </form>
+</view>

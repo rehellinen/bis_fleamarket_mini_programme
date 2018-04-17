@@ -1,0 +1,40 @@
+.goods-container{
+  display: flex;
+  width: 750rpx;
+  background-color: white;
+  color: #6d6d6d;
+  border-bottom: 1rpx solid #e9e9e9;
+  padding: 30rpx 0 30rpx 0;
+}
+
+.goods-image{
+  width: 190rpx;
+  height: 190rpx; 
+  flex-basis: 190rpx;
+  margin-left: 20rpx;
+}
+
+.middle{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin-left: 40rpx;
+  flex-basis: 350rpx;
+}
+
+.name{
+  font-size: 32rpx;
+}
+
+.price{
+  font-size: 30rpx;
+  margin-top: 20rpx;
+}
+
+.right{
+  flex-basis: 150rpx;
+}
+
+.quantity{
+  font-size: 30rpx;
+}

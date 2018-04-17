@@ -1,66 +1,84 @@
-// pages/goods/goods.js
+import {GoodsModel} from './goods-model.js'
+let goods = new GoodsModel()
+let app = getApp()
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    goods: [
+      [], []
+    ],
+    hasMore: [true, true],
+    loadingHidden: false,
+    photoCount: 0,
+    loadedPhoto: 0,
+    tabIndex: 0,
+    page: [1, 1]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-  
+    this._loadGoods()
+    
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  // flag为true时重新加载数据
+  _loadGoods(flag){
+    let index = this.data.tabIndex
+    if(index == 0){
+      // 获取在售商品
+      goods.getGoods(this.data.page[index], (res) => {
+        this.data.photoCount += res.length
+        if (flag) {
+          this.data.goods[index] = res
+        } else {
+          this.data.goods[index].push.apply(this.data.goods[index], res)
+        }
+        this.setData({
+          goods: this.data.goods,
+        })
+      }, (res) => {
+        this.data.hasMore[index] = false
+        this.setData({
+          loadingHidden: true
+        })
+      }) 
+    }else{
+      // 获取下架商品
+      goods.getDownedGoods(this.data.page[index], (res) => {
+        if (flag) {
+          this.data.goods[index] = res
+        } else {
+          this.data.goods[index].push.apply(this.data.goods[index], res)
+        }
+        this.setData({
+          goods: this.data.goods,
+        })
+      }, (res) => {
+        this.data.hasMore[index] = false
+        this.setData({
+          loadingHidden: true
+        })
+      } )
+    }       
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  onReachBottom(event){
+    let index = this.data.tabIndex
+    if (this.data.hasMore[index]) {
+      this.data.page[index]++
+      this._loadGoods()
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  switchTab(event) {
+    let index = event.detail.index
+    this.data.tabIndex = index
+    if (this.data.goods[index].length == 0) {
+      this._loadGoods()
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  isLoadAll(event) {
+    let that = this
+    app.isLoadAll(that)
   }
 })

@@ -1,6 +1,18 @@
-<view class="goods-container">
+<view class='loading-container' hidden="{{loadingHidden}}">
+  <image src='/images/theme/loading.gif'></image>
+</view>
+
+<view class="goods-container" hidden="{{!loadingHidden}}">
   <view class='text-container'>
     <text>管 理 商 品</text>
   </view>
-  <switch-tab tab="{{['在售中', '已下架']}}"></switch-tab>
+  <switch-tab tab="{{['在售中', '已下架']}}" bind:switchTab="switchTab">
+    <view slot="在售中">
+      <goods-list goods="{{goods[0]}}" bind:loaded="isLoadAll"></goods-list>
+    </view>
+
+    <view slot="已下架">
+      <goods-list goods="{{goods[1]}}"></goods-list>
+    </view>
+  </switch-tab>
 </view>

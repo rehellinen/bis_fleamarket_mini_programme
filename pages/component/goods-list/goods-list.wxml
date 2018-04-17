@@ -1,0 +1,15 @@
+<view>
+  <block wx:for="{{goods}}" wx:key="">
+    <view class='goods-container' bindtap='toDetail' data-id='{{item.id}}'>
+      <image class='goods-image' src='{{item.image_id.image_url}}' bindload='loaded'></image>
+      <view class='middle'>
+        <text class='name'>{{item.name}}</text>
+        <text class='price'>￥{{item.price}}</text>
+      </view>
+
+      <view class='right'>
+        <text class='quantity'>库存：{{item.quantity}}</text>
+      </view>
+    </view>
+  </block>
+</view>
