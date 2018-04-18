@@ -49,10 +49,24 @@ class GoodsModel extends Base {
   }
 
   addGoods(data, cb, ecb){
-    console.log(data)
     let params = {
       url: 'goods',
       type: 'POST',
+      data,
+      callBack(res) {
+        cb && cb(res)
+      },
+      eCallBack(res) {
+        ecb && ecb(res)
+      }
+    }
+    this.request(params)
+  }
+
+  editGoods(data, cb, ecb) {
+    let params = {
+      url: 'goods',
+      type: 'PUT',
       data,
       callBack(res) {
         cb && cb(res)
@@ -68,6 +82,21 @@ class GoodsModel extends Base {
   getGoodsDetail(url, cb) {
     let params = {
       url: url,
+      callBack: function (data) {
+        cb && cb(data);
+      }
+    }
+    this.request(params)
+  }
+
+  // 更改商品状态
+  updateGoodsStatus(id, status, cb){
+    let params = {
+      url: 'goods/status',
+      type: 'POST',
+      data: {
+        id, status
+      },
       callBack: function (data) {
         cb && cb(data);
       }

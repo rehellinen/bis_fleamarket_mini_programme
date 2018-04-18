@@ -16,8 +16,7 @@ Page({
   },
 
   onLoad: function (options) {
-    this._loadGoods()
-    
+    this._loadGoods()    
   },
 
   // flag为true时重新加载数据
@@ -37,7 +36,11 @@ Page({
         })
       }, (res) => {
         this.data.hasMore[index] = false
+        if (flag) {
+          this.data.goods[index] = []
+        }
         this.setData({
+          goods: this.data.goods,
           loadingHidden: true
         })
       }) 
@@ -54,7 +57,11 @@ Page({
         })
       }, (res) => {
         this.data.hasMore[index] = false
+        if(flag){
+          this.data.goods[index] = []
+        }
         this.setData({
+          goods: this.data.goods,
           loadingHidden: true
         })
       } )
@@ -87,5 +94,14 @@ Page({
     wx.navigateTo({
       url: '/pages/goods-detail/goods-detail?id=0',
     })
+  },
+
+  reload(event){
+    let index = this.data.tabIndex
+    this.data.tabIndex = 0
+    this._loadGoods(true)
+    this.data.tabIndex = 1
+    this._loadGoods(true)
+    this.data.tabIndex = index
   }
 })

@@ -22,12 +22,10 @@
 .icon-container{
   position: absolute;
   width: 80rpx;
-  height: 80rpx;
+  height: 35rpx;
   top: 30rpx;
   right: 20rpx;
-  background-color: black; 
   border-radius:50px;
-  opacity: 0.7; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,7 +33,6 @@
 }
 
 .icon{
-  color: white;
-  font-size: 50rpx;
-  padding-bottom: 8rpx;
+  width: 50rpx;
+  height: 50rpx;
 }

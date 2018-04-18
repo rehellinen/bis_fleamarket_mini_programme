@@ -74,23 +74,20 @@ Page({
     })
   },
 
-  confirm(event) {
+  deliver(event) {
     let id = event.currentTarget.dataset.id
     let that = this
     wx.showModal({
-      title: '确认收货',
-      content: '是否确认收货?',
+      content: '是否确认发货',
       success() {
-        order.comfirm(id, (res) => {
-          that.data.order.status = 4
+        order.deliver(id, (res) => {
+          that.data.order.status = 3
           that.setData({
             order: that.data.order
           })
           wx.setStorageSync('newOrder', true)
-          wx.showModal({
-            title: '成功',
-            content: '确认收货成功',
-            showCancel: false
+          wx.showToast({
+            title: '发货成功',
           })
         })
       }

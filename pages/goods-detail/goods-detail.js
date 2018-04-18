@@ -16,8 +16,10 @@ Page({
       // 加载数据
       goods.getGoodsDetail(url + id, (res) => {
         this.setData({
+          id: id,
           info: res,
-          imageUrl: res.image_id.image_url
+          imageUrl: res.image_id.image_url,
+          imageID: res.image_id.id
         })
       })
     }
@@ -51,19 +53,37 @@ Page({
   submit(event){
     let data = event.detail.value
     data.image_id = this.data.imageID
-    goods.addGoods(data, (res) => {
-      wx.showModal({
-        title: '成功',
-        content: '添加商品成功',
-        success() {
-          wx.navigateBack({})
-        }
+    if(this.data.id){
+      data.id = this.data.id
+      goods.editGoods(data, (res) => {
+        wx.showModal({
+          title: '成功',
+          content: '修改商品信息成功',
+          success() {
+            wx.navigateBack({})
+          }
+        })
+      }, (res) => {
+        wx.showModal({
+          title: '失败',
+          content: res.message
+        })
       })
-    }, (res) => {
-      wx.showModal({
-        title: '失败',
-        content: res.message
+    }else{
+      goods.addGoods(data, (res) => {
+        wx.showModal({
+          title: '成功',
+          content: '添加商品成功',
+          success() {
+            wx.navigateBack({})
+          }
+        })
+      }, (res) => {
+        wx.showModal({
+          title: '失败',
+          content: res.message
+        })
       })
-    })
+    }    
   }
 })

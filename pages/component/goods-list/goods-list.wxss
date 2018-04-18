@@ -33,8 +33,32 @@
 
 .right{
   flex-basis: 150rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .quantity{
   font-size: 30rpx;
+}
+
+.up{
+  font-size: 26rpx;
+  border: 1rpx solid #81f3ef;
+  border-radius: 5px;
+  width: 75rpx;
+  height: 40rpx;
+  padding-left: 10rpx;
+  padding-top: 5rpx;
+  margin-left: 35rpx;
+  background-color: #f1f1f1;
+}
+
+.no-order-text {
+  display: flex;
+  height: 80rpx;
+  font-size: 30rpx;
+  color: #ccc;
+  align-items: center;
+  justify-content: center;
 }

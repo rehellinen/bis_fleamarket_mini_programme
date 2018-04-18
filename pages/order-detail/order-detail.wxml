@@ -1,8 +1,8 @@
-<view class='loading-container' hidden="{{!loadingHidden}}">
+<view class='loading-container' hidden="{{loadingHidden}}">
   <image src='/images/theme/loading.gif'></image>
 </view>
 
-<view class='container' hidden="{{loadingHidden}}">
+<view class='container' hidden="{{!loadingHidden}}">
   <order-info time="{{order.create_time}}" order_no="{{order.order_no}}" status="{{order.status}}"></order-info>
 
   <seller-info wechat="{{order.buyer_id.weixin}}" phone="{{order.buyer_id.telephone}}" 

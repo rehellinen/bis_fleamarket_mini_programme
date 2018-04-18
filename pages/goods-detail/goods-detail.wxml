@@ -17,6 +17,11 @@
     </view>    
 
     <view class="section">
+      <text>排序：</text>
+      <input name="listorder" value='{{info.listorder}}' />
+    </view>
+
+    <view class="section">
       <text class='major-text'>描述：</text>
       <textarea name="description" value='{{info.description}}'/>
     </view>   

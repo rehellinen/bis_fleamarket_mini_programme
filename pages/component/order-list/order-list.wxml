@@ -5,14 +5,14 @@
 
   <block wx:for="{{order}}" wx:key="">
     <view class='detail-container' bindtap='toOrderMore' data-id='{{item.id}}' data-type='{{item.type}}'>
-      <image class='detail-image' src='{{item.snap_img}}' mode='aspectFill'></image>
+      <image class='detail-image' src='{{item.snap_img}}' mode='aspectFill' bindload='loaded'></image>
       <view class='two-text'>
         <text class='name-text'>{{item.snap_name}}</text>
         <text class="status-text" wx:if="{{item.status==1}}">待付款</text>
         <text class="status-text" wx:if="{{item.status==2}}">已付款</text>
         <text class="status-text" wx:if="{{item.status==3}}">已发货</text>
-        <text class="status-text" wx:if="{{item.status==4}}">付款成功但库存量不足</text>
-        <text class="status-text" wx:if="{{item.status==5}}">已完成</text>
+        <text class="status-text" wx:if="{{item.status==4}}">已完成</text>
+        <text class="status-text" wx:if="{{item.status==5}}">付款成功但库存量不足</text>
       </view>
       <text class='price'>￥{{item.total_price}}</text>
     </view>

@@ -1,14 +1,18 @@
 <view>
+  <block wx:if="{{order.length == 0}}">
+    <text class='no-order-text'>没 有 相 关 订 单</text>
+  </block>
   <block wx:for="{{goods}}" wx:key="">
-    <view class='goods-container' bindtap='toDetail' data-id='{{item.id}}'>
+    <view class="goods-container" bindtap="{{item.status == 0 ? '' : 'toDetail'}}" data-id='{{item.id}}'>
       <image class='goods-image' src='{{item.image_id.image_url}}' bindload='loaded'></image>
       <view class='middle'>
         <text class='name'>{{item.name}}</text>
         <text class='price'>￥{{item.price}}</text>
       </view>
-
       <view class='right'>
-        <text class='quantity'>库存：{{item.quantity}}</text>
+        <text class='quantity'>库存 : {{item.quantity}}</text>
+        <text class='up' bindtap='status' wx:if="{{item.status == 0}}" data-id='{{item.id}}' data-status='1'>上 架</text>
+        <text class='up' catchtap='status' wx:else data-id='{{item.id}}' data-status='0'>下 架</text>
       </view>
     </view>
   </block>
