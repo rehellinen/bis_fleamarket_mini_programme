@@ -1,19 +1,17 @@
-<view class='order-container'>
-  <switch-tab tab="{{['全部','可提现','结算中','已完成']}}">
-    <view slot="全部" class='single-container'>
-      <view>
-        <view class='icon-status-container'>
-          <view class='icon'>
-            <text class='icon-text'>提</text>
-          </view>          
-          <text class='status'>可提现</text>
-        </view>        
-        <text class='order-name'>精通Linux</text>
+<block wx:for="{{order}}" wx:key="">
+  <view class='single-container'>
+    <view>
+      <view class='icon-status-container'>
+        <view class='icon'>
+          <text class='icon-text'>提</text>
+        </view>
+        <text class='status'>可提现</text>
       </view>
-      <view>  
-        <text class='price'>+5.00</text>
-        <text class='time'>2018-4-25</text>
-      </view>
+      <text class='order-name'>{{item.snap_name}}</text>
     </view>
-  </switch-tab>
-</view>
+    <view>
+      <text class='price'>{{item.total_price}}</text>
+      <text class='time'>{{item.create_time}}</text>
+    </view>
+  </view>
+</block>

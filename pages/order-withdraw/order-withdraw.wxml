@@ -2,6 +2,12 @@
   <view class='text-container'>
     <text>收 支 明 细</text>
   </view>
+  <view class='orders-container'>
+    <switch-tab tab="{{['全部','可提现','结算中','已完成']}}" bind:switchTab="switchTab">
+      <view slot="全部">
+        <order-simple order="{{order[0]}}"></order-simple>
+      </view>
 
-  <order-simple></order-simple>
+    </switch-tab>
+  </view>
 </view>

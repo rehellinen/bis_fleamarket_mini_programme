@@ -1,5 +1,6 @@
 {
   "usingComponents" : {
-    "order-simple" : "../component/order-simple/order-simple"
+    "order-simple" : "../component/order-simple/order-simple",
+    "switch-tab": "../component/switch-tab/switch-tab"
   }
 }
