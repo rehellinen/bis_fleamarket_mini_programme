@@ -1,8 +1,13 @@
 <view class='order-container'>
-  <switch-tab tab="{{['交易中','可提现','结算中','已完成']}}">
-    <view slot="交易中" class='single-container'>
+  <switch-tab tab="{{['全部','可提现','结算中','已完成']}}">
+    <view slot="全部" class='single-container'>
       <view>
-        <text class='status'>可提现</text>
+        <view class='icon-status-container'>
+          <view class='icon'>
+            <text class='icon-text'>提</text>
+          </view>          
+          <text class='status'>可提现</text>
+        </view>        
         <text class='order-name'>精通Linux</text>
       </view>
       <view>  

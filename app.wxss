@@ -22,3 +22,7 @@
   width: 300rpx;
   height: 300rpx;
 }
+
+text{
+  font-family: MicroSoft Yahei;
+}
