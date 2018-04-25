@@ -28,7 +28,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 11,
 			"list": [
 				{
 					"id": 0,
@@ -95,6 +95,12 @@
 					"name": "goods-detail",
 					"pathName": "pages/goods-detail/goods-detail",
 					"query": "id=27"
+				},
+				{
+					"id": -1,
+					"name": "withdraw",
+					"pathName": "pages/order-withdraw/order-withdraw",
+					"query": ""
 				}
 			]
 		}

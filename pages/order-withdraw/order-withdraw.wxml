@@ -1,1 +1,7 @@
+<view class='order-container'>
+  <view class='text-container'>
+    <text>收 支 明 细</text>
+  </view>
 
+  <order-simple></order-simple>
+</view>

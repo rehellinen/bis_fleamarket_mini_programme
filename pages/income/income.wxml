@@ -6,25 +6,25 @@
     <image src='/images/theme/personal@header.jpg' class='image-top'></image>
   </view>
   <view class='income-container'>
-    <view class='single-container' bindtap='toOrderWithdraw' data-type='3'>
+    <view class='single-container' bindtap='toOrderWithdraw'>
       <view class='title'>
         <text>交易中</text>
       </view>
       <text class='quantity'>130 元</text>      
     </view>
-    <view class='single-container' bindtap='toOrderWithdraw' data-type='4'>
+    <view class='single-container' bindtap='toOrderWithdraw'>
       <view class='title'>
         <text>可提现</text>
       </view>
       <text class='quantity'>130 元</text>      
     </view>
-    <view class='single-container' bindtap='toOrderWithdraw' data-type='6'>
+    <view class='single-container' bindtap='toOrderWithdraw'>
       <view class='title'>
         <text>结算中</text>
       </view>
       <text class='quantity'>130 元</text>      
     </view>
-    <view class='single-container' bindtap='toOrderWithdraw' data-type='7'>
+    <view class='single-container' bindtap='toOrderWithdraw'>
       <view class='title'>
         <text>已完成</text>
       </view>
