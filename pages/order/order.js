@@ -24,9 +24,9 @@ Page({
     }, 5000)
   },
 
-  onShow() {
+  onShow(){
     if (wx.getStorageSync('newOrder')) {
-      this._loadOrder(true)
+      this.reload(true)
       wx.setStorageSync('newOrder', false)
     }
   },
@@ -39,26 +39,28 @@ Page({
     }
   },
 
-  reload() {
-    this.data.page[this.data.tabIndex] = 1
-    this._loadOrder(true)
-  },
+  reload(event) {
+    this.data.order = [
+      [], [], [], [], []
+    ],
+    this.data.hasMore = [true, true, true, true, true],
+    this.data.page = [1, 1, 1, 1, 1]
 
-  _loadOrder(flag) {
+    this._loadOrder()    
+  },
+  
+  _loadOrder() {
     let index = this.data.tabIndex
     order.getOrder(index, this.data.page[index], (res) => {
       this.data.photoCount += res.length
-      if (flag) {
-        this.data.order[index] = res
-      } else {
-        this.data.order[index].push.apply(this.data.order[index], res)
-      }
+      this.data.order[index].push.apply(this.data.order[index], res)
       this.setData({
-        order: this.data.order,
+        order: this.data.order
       })
     }, (res) => {
       this.data.hasMore[index] = false
       this.setData({
+        order: this.data.order,
         loadingHidden: true
       })
     })

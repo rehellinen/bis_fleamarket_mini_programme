@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "image-top": "../component/image-top/image-top"
+  }
+}

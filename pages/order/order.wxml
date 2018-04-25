@@ -24,6 +24,5 @@
       <order-list order="{{order[4]}}"></order-list>
     </view>
   </switch-tab>
-
 </view>
 <!-- 我的订单 -->

@@ -1,2 +1,34 @@
-<!--pages/income/income.wxml-->
-<text>pages/income/income.wxml</text>
+<view class='order-container'>
+  <view class='text-container'>
+    <text>我 的 收 入</text>
+  </view>
+  <view class='image-top-container'>
+    <image src='/images/theme/personal@header.jpg' class='image-top'></image>
+  </view>
+  <view class='income-container'>
+    <view class='single-container' bindtap='toOrderWithdraw' data-type='3'>
+      <view class='title'>
+        <text>交易中</text>
+      </view>
+      <text class='quantity'>130 元</text>      
+    </view>
+    <view class='single-container' bindtap='toOrderWithdraw' data-type='4'>
+      <view class='title'>
+        <text>可提现</text>
+      </view>
+      <text class='quantity'>130 元</text>      
+    </view>
+    <view class='single-container' bindtap='toOrderWithdraw' data-type='6'>
+      <view class='title'>
+        <text>结算中</text>
+      </view>
+      <text class='quantity'>130 元</text>      
+    </view>
+    <view class='single-container' bindtap='toOrderWithdraw' data-type='7'>
+      <view class='title'>
+        <text>已完成</text>
+      </view>
+      <text class='quantity'>130 元</text>      
+    </view>
+  </view>
+</view>

@@ -56,6 +56,7 @@ Page({
     if(this.data.id){
       data.id = this.data.id
       goods.editGoods(data, (res) => {
+        wx.setStorageSync('newGoods', true)
         wx.showModal({
           title: '成功',
           content: '修改商品信息成功',

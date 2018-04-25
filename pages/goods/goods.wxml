@@ -12,11 +12,11 @@
   </view>
   <switch-tab tab="{{['在售中', '已下架']}}" bind:switchTab="switchTab">
     <view slot="在售中">
-      <goods-list goods="{{goods[0]}}" bind:loaded="isLoadAll" bind:reload="reload"></goods-list>
+      <goods-list goods="{{goods[0]}}" bind:loaded="isLoadAll" bind:reload="_reload"></goods-list>
     </view>
 
     <view slot="已下架">
-      <goods-list goods="{{goods[1]}}" bind:reload="reload"></goods-list>
+      <goods-list goods="{{goods[1]}}" bind:reload="_reload"></goods-list>
     </view>
   </switch-tab>
 </view>

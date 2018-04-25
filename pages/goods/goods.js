@@ -19,26 +19,25 @@ Page({
     this._loadGoods()    
   },
 
-  // flag为true时重新加载数据
-  _loadGoods(flag){
+  onShow(){
+    if (wx.getStorageSync('newGoods')){
+      this._reload()
+      wx.setStorageSync('newGoods', false)
+    }
+  },
+
+  _loadGoods(){
     let index = this.data.tabIndex
     if(index == 0){
       // 获取在售商品
       goods.getGoods(this.data.page[index], (res) => {
         this.data.photoCount += res.length
-        if (flag) {
-          this.data.goods[index] = res
-        } else {
-          this.data.goods[index].push.apply(this.data.goods[index], res)
-        }
+        this.data.goods[index].push.apply(this.data.goods[index], res)
         this.setData({
           goods: this.data.goods,
         })
       }, (res) => {
         this.data.hasMore[index] = false
-        if (flag) {
-          this.data.goods[index] = []
-        }
         this.setData({
           goods: this.data.goods,
           loadingHidden: true
@@ -47,24 +46,17 @@ Page({
     }else{
       // 获取下架商品
       goods.getDownedGoods(this.data.page[index], (res) => {
-        if (flag) {
-          this.data.goods[index] = res
-        } else {
-          this.data.goods[index].push.apply(this.data.goods[index], res)
-        }
+        this.data.goods[index].push.apply(this.data.goods[index], res)
         this.setData({
           goods: this.data.goods,
         })
       }, (res) => {
         this.data.hasMore[index] = false
-        if(flag){
-          this.data.goods[index] = []
-        }
         this.setData({
           goods: this.data.goods,
           loadingHidden: true
         })
-      } )
+      })
     }       
   },
 
@@ -87,21 +79,24 @@ Page({
   isLoadAll(event) {
     let that = this
     app.isLoadAll(that)
+  },  
+
+  // 恢复到初始状态
+  _reload(event){ 
+    this.data.page = [1, 1]
+    this.data.hasMore = [true, true]
+    this.data.goods = [
+      [], []
+    ]    
+    
+    this._loadGoods(true)    
   },
 
-  toAdd(event){
+  //跳转到添加商品的页面
+  toAdd(event) {
     let id = event.currentTarget.dataset.id
     wx.navigateTo({
       url: '/pages/goods-detail/goods-detail?id=0',
     })
-  },
-
-  reload(event){
-    let index = this.data.tabIndex
-    this.data.tabIndex = 0
-    this._loadGoods(true)
-    this.data.tabIndex = 1
-    this._loadGoods(true)
-    this.data.tabIndex = index
   }
 })

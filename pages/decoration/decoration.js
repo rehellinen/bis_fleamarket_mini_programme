@@ -57,8 +57,7 @@ Page({
           })
         }
       })
-    }
-    if (this.data.backNew) {
+    }else if (this.data.backNew) {
       register.editImage('top_image_id', this.data.back, (res) => {
         if (res.statusCode == 200) {
           wx.showToast({
@@ -71,6 +70,11 @@ Page({
             icon: 'none'
           })
         }
+      })
+    }else{
+      wx.showToast({
+        title: '修改成功!',
+        icon: 'success'
       })
     }
   }

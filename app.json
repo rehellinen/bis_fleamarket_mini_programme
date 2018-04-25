@@ -10,7 +10,8 @@
     "pages/register/register",
     "pages/setting/setting",
     "pages/order-detail/order-detail",
-    "pages/goods-detail/goods-detail"
+    "pages/goods-detail/goods-detail",
+    "pages/order-withdraw/order-withdraw"
   ],
   "window": {
     "navigationBarTitleText": "易乎老板",
