@@ -5,9 +5,17 @@
   <view class='orders-container'>
     <switch-tab tab="{{['全部','可提现','结算中','已完成']}}" bind:switchTab="switchTab">
       <view slot="全部">
-        <order-simple order="{{order[0]}}"></order-simple>
+        <order-simple order="{{order[0]}}" bind:reload="reload"></order-simple>
       </view>
-
+      <view slot="可提现">
+        <order-simple order="{{order[1]}}" bind:reload="reload"></order-simple>
+      </view>
+      <view slot="结算中">
+        <order-simple order="{{order[2]}}"></order-simple>
+      </view>
+      <view slot="已完成">
+        <order-simple order="{{order[3]}}"></order-simple>
+      </view>
     </switch-tab>
   </view>
 </view>

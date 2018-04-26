@@ -46,6 +46,29 @@ class OrderModel extends Base {
     }
     this.request(params)
   }
+
+  // 发起提现
+  withdraw(id, cb){
+    let params = {
+      url: 'order/withdraw/' + id,
+      type: "POST",
+      callBack(res) {
+        cb && cb(res)
+      }
+    }
+    this.request(params)
+  }
+
+  // 获取价格信息
+  getPrice(cb){
+    let params = {
+      url: 'order/price',
+      callBack(res) {
+        cb && cb(res)
+      }
+    }
+    this.request(params)
+  }
 }
 
 export { OrderModel }

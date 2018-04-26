@@ -10,25 +10,25 @@
       <view class='title'>
         <text>交易中</text>
       </view>
-      <text class='quantity'>130 元</text>      
+      <text class='quantity'>{{price.trading}} 元</text>      
     </view>
     <view class='single-container' bindtap='toOrderWithdraw'>
       <view class='title'>
         <text>可提现</text>
       </view>
-      <text class='quantity'>130 元</text>      
+      <text class='quantity'>{{price.completed}} 元</text>      
     </view>
     <view class='single-container' bindtap='toOrderWithdraw'>
       <view class='title'>
         <text>结算中</text>
       </view>
-      <text class='quantity'>130 元</text>      
+      <text class='quantity'>{{price.withdrawing}} 元</text>      
     </view>
     <view class='single-container' bindtap='toOrderWithdraw'>
       <view class='title'>
         <text>已完成</text>
       </view>
-      <text class='quantity'>130 元</text>      
+      <text class='quantity'>{{price.withdrawn}} 元</text>      
     </view>
   </view>
 </view>

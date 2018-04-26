@@ -1,11 +1,15 @@
 <block wx:for="{{order}}" wx:key="">
-  <view class='single-container'>
+  <view class='single-container' bindtap='toWithdraw' data-status='{{item.status}}' data-id='{{item.id}}'>
     <view>
       <view class='icon-status-container'>
         <view class='icon'>
-          <text class='icon-text'>提</text>
+          <text class='icon-text' wx:if="{{item.status==4}}">提</text>
+          <text class='icon-text' wx:if="{{item.status==6}}">结</text>
+          <text class='icon-text' wx:if="{{item.status==7}}">完</text>
         </view>
-        <text class='status'>可提现</text>
+        <text class='status' wx:if="{{item.status==4}}">可提现</text>
+        <text class='status' wx:if="{{item.status==6}}">结算中</text>
+        <text class='status' wx:if="{{item.status==7}}">已完成</text>
       </view>
       <text class='order-name'>{{item.snap_name}}</text>
     </view>

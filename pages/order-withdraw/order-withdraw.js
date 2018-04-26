@@ -14,7 +14,7 @@ Page({
   onLoad: function (options) {
     this._loadOrder()
   },
-  
+
   onShow() {
     if (wx.getStorageSync('newOrder')) {
       this.reload(true)
@@ -22,13 +22,19 @@ Page({
     }
   },
 
-  _loadOrder(){
+  _loadOrder() {
     let index = this.data.tabIndex
     let status = index
-    if(index == 0){
+    if (index == 0) {
       status = -2
+    } else if (index == 1) {
+      status = 4
+    } else if (index == 2) {
+      status = 6
+    } else {
+      status = 7
     }
-    order.getOrder(index, this.data.page[index], (res) => {
+    order.getOrder(status, this.data.page[index], (res) => {
       this.data.photoCount += res.length
       this.data.order[index].push.apply(this.data.order[index], res)
       this.setData({
@@ -46,9 +52,9 @@ Page({
   reload(event) {
     this.data.order = [
       [], [], [], [], []
-    ],
-      this.data.hasMore = [true, true, true, true, true],
-      this.data.page = [1, 1, 1, 1, 1]
+    ]
+    this.data.hasMore = [true, true, true, true, true]
+    this.data.page = [1, 1, 1, 1, 1]
 
     this._loadOrder()
   },
