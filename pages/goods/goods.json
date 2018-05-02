@@ -2,5 +2,6 @@
   "usingComponents": {
     "switch-tab": "../component/switch-tab/switch-tab",
     "goods-list": "../component/goods-list/goods-list"
-  }
+  },
+  "enablePullDownRefresh": true
 }

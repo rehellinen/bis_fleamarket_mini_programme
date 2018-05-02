@@ -1,5 +1,9 @@
 <view class='container detail-container'>
-  <image src='{{imageUrl}}' class='photo-image' bindtap='uploadImage'></image>
+  <image src='{{imageUrl}}' class='goods-image' bindtap='uploadImage'
+          wx:if="{{imageUrl}}" mode='aspectFill'></image>
+  <image src='/images/theme/photo.png' class='photo-image' bindtap='uploadImage' 
+          wx:else></image>
+  
   <form bindsubmit="submit">
     <view class="section">
       <text>名称：</text>

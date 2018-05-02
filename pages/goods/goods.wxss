@@ -20,7 +20,7 @@
 }
 
 .icon-container{
-  position: absolute;
+  position: fixed;
   width: 80rpx;
   height: 35rpx;
   top: 30rpx;

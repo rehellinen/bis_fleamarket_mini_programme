@@ -13,8 +13,8 @@
         <text class='quantity'>库存 : {{item.quantity}}</text>
         <view class='button-container' >
           <button size='mini' wx:if="{{item.status == 0}}" data-id='{{item.id}}' 
-                  data-status='1'>上架</button>
-          <button size='mini' wx:else data-id='{{item.id}}' data-status='0'>下架</button>
+                  data-status='1' catchtap='status'>上架</button>
+          <button size='mini' wx:else data-id='{{item.id}}' data-status='0' catchtap='status'>下架</button>
         </view>
       </view>
     </view>

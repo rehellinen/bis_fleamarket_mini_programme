@@ -18,5 +18,5 @@ Page({
     wx.navigateTo({
       url: '/pages/order-withdraw/order-withdraw',
     })
-  }
+  }  
 })

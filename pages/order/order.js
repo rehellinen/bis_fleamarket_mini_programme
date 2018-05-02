@@ -39,17 +39,17 @@ Page({
     }
   },
 
-  reload(event) {
+  reload(cb) {
     this.data.order = [
       [], [], [], [], []
     ],
     this.data.hasMore = [true, true, true, true, true],
     this.data.page = [1, 1, 1, 1, 1]
 
-    this._loadOrder()    
+    this._loadOrder(cb)    
   },
   
-  _loadOrder() {
+  _loadOrder(cb) {
     let index = this.data.tabIndex
     order.getOrder(index, this.data.page[index], (res) => {
       this.data.photoCount += res.length
@@ -57,12 +57,14 @@ Page({
       this.setData({
         order: this.data.order
       })
+      cb && cb()
     }, (res) => {
       this.data.hasMore[index] = false
       this.setData({
         order: this.data.order,
         loadingHidden: true
       })
+      cb && cb()
     })
   },
 
@@ -77,5 +79,11 @@ Page({
     if (this.data.order[index].length == 0) {
       this._loadOrder()
     }
+  },
+
+  onPullDownRefresh() {
+    this.reload(() => {
+      wx.stopPullDownRefresh()
+    })
   }
 })

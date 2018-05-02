@@ -26,7 +26,7 @@ Page({
     }
   },
 
-  _loadGoods(){
+  _loadGoods(cb){
     let index = this.data.tabIndex
     if(index == 0){
       // 获取在售商品
@@ -36,12 +36,14 @@ Page({
         this.setData({
           goods: this.data.goods,
         })
+        cb && cb()
       }, (res) => {
         this.data.hasMore[index] = false
         this.setData({
           goods: this.data.goods,
           loadingHidden: true
         })
+        cb && cb()
       }) 
     }else{
       // 获取下架商品
@@ -50,12 +52,14 @@ Page({
         this.setData({
           goods: this.data.goods,
         })
+        cb && cb()
       }, (res) => {
         this.data.hasMore[index] = false
         this.setData({
           goods: this.data.goods,
           loadingHidden: true
         })
+        cb && cb()
       })
     }       
   },
@@ -82,14 +86,14 @@ Page({
   },  
 
   // 恢复到初始状态
-  _reload(event){ 
+  _reload(cb){ 
     this.data.page = [1, 1]
     this.data.hasMore = [true, true]
     this.data.goods = [
       [], []
     ]    
     
-    this._loadGoods(true)    
+    this._loadGoods(cb)    
   },
 
   //跳转到添加商品的页面
@@ -97,6 +101,12 @@ Page({
     let id = event.currentTarget.dataset.id
     wx.navigateTo({
       url: '/pages/goods-detail/goods-detail?id=0',
+    })
+  },
+
+  onPullDownRefresh() {
+    this._reload(() => {
+      wx.stopPullDownRefresh()
     })
   }
 })

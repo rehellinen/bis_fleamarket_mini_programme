@@ -2,6 +2,11 @@
 
 }
 
+.goods-image{
+  width: 750rpx;
+  height: 500rpx;
+}
+
 .photo-image{
   width: 430rpx;
   height: 210rpx;

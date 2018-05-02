@@ -23,26 +23,27 @@ Page({
       operation = '修 改 信 息'
       register.getInfo( (res) => {
         this.setData({
-          info: res,
-          major
+          info: res
         })
       })
     }
     this.setData({
       type: str,
-      operation: operation
+      operation: operation,
+      major: major
     })
   },
 
   formSubmit(event){
     let data = event.detail.value
     let url = ''
-    if (wx.getStorageSync('type') == 'shop') {
-      url = 'shop'
-    } else {
-      url = 'seller'
-    }
+    
     if (wx.getStorageSync('token')){
+      if (wx.getStorageSync('type') == 'shop') {
+        url = 'shop'
+      } else {
+        url = 'seller'
+      }
       register.editInfo(url, data, (res) => {
         wx.showModal({
           title: '成功',
@@ -61,7 +62,12 @@ Page({
           showCancel: false
         })
       })
-    }else{            
+    }else{
+      if (this.data.type == '注 册 商 家') {
+        url = 'shop'
+      }else{
+        url = 'seller'
+      }
       register.register(url, data, (res) => {
         wx.showModal({
           title: '成功',

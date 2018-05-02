@@ -3,7 +3,7 @@ let goods = new GoodsModel()
 
 Page({
   data: {
-    imageUrl: '/images/theme/photo.png'
+    imageUrl: ''
   },
 
   onLoad: function (options) {
@@ -62,11 +62,13 @@ Page({
           content: '修改商品信息成功',
           success() {
             wx.navigateBack({})
-          }
+          },
+          showCancel: false
         })
       }, (res) => {
         wx.showModal({
           title: '失败',
+          showCancel: false,
           content: res.message
         })
       })
