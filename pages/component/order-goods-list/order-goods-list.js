@@ -2,7 +2,8 @@ let app = getApp()
 
 Component({
   properties: {
-    goods: Array
+    goods: Array,
+    type: Number
   },
 
   data: {
@@ -10,10 +11,10 @@ Component({
   },
 
   methods: {
-    loaded(event){
-      var myEventDetail = {} 
-      var myEventOption = {} 
-      this.triggerEvent('loaded', myEventDetail, myEventOption)      
+    loaded(event) {
+      var myEventDetail = {}
+      var myEventOption = {}
+      this.triggerEvent('loaded', myEventDetail, myEventOption)
     }
   }
 })

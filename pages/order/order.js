@@ -51,7 +51,11 @@ Page({
   
   _loadOrder(cb) {
     let index = this.data.tabIndex
-    order.getOrder(index, this.data.page[index], (res) => {
+    let status = index
+    if(index == 4){
+      status = -2
+    }
+    order.getOrder(status, this.data.page[index], (res) => {
       this.data.photoCount += res.length
       this.data.order[index].push.apply(this.data.order[index], res)
       this.setData({
