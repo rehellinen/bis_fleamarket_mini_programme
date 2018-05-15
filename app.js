@@ -2,8 +2,10 @@ import { Token } from './utils/token.js'
 
 App({
   onLaunch(){
-    // 检验Token令牌
     let token = new Token
-    // token.verifyOpenID()
+    // 检验openID是否存在
+    token.verifyOpenID()
+    // 检验Token令牌
+    token.verify()
   }
 })

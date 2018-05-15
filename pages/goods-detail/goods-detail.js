@@ -25,6 +25,7 @@ Page({
     }
   },
 
+  // 上传图片
   uploadImage(event){
     let that = this
     wx.chooseImage({
@@ -53,18 +54,19 @@ Page({
   submit(event){
     let data = event.detail.value
     data.image_id = this.data.imageID
+
     if(this.data.id){
+      // 修改商品信息
       data.id = this.data.id
       goods.editGoods(data, (res) => {
         wx.setStorageSync('newGoods', true)
         wx.showModal({
           title: '成功',
           content: '修改商品信息成功',
+          showCancel: false,
           success() {
-            wx.navigateBack({})
-            wx.setStorageSync('newGoods', true)
-          },
-          showCancel: false
+            wx.navigateBack({})            
+          }          
         })
       }, (res) => {
         wx.showModal({
@@ -74,9 +76,12 @@ Page({
         })
       })
     }else{
+      // 添加商品
       goods.addGoods(data, (res) => {
+        wx.setStorageSync('newGoods', true)
         wx.showModal({
           title: '成功',
+          showCancel: false,
           content: '添加商品成功',
           success() {
             wx.navigateBack({})
@@ -85,6 +90,7 @@ Page({
       }, (res) => {
         wx.showModal({
           title: '失败',
+          showCancel: false,
           content: res.message
         })
       })

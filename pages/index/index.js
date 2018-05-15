@@ -1,17 +1,20 @@
-import { Token } from '../../utils/token.js'
-let token = new Token()
-
 Page({
   data: {
-    
+    isPass: false
   },
 
   onLoad: function (options) {
-    token.verify( () => {
-      let type = wx.getStorageSync('type')
+    let type = wx.getStorageSync('type')
+    let status = wx.getStorageSync('status')
+
+    // 判断商家是否通过审核
+    if(status === 1){
       this.setData({
-        type: type
+        isPass: true
       })
+    }
+    this.setData({
+      type: type
     })
   },
 

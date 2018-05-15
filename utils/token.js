@@ -7,14 +7,17 @@ class Token {
     this.openidUrl = Config.restUrl + 'token/openid'
   }
 
-  verify(cb) {
+  // 检验Token令牌主方法
+  verify() {
     let token = wx.getStorageSync('token')
-    if (!token) {
-      this.getTokenFromServer()
+    let status = wx.getStorageSync('status')
+
+    // token不存在或者status不为1时，重新申请令牌
+    if (token && status === 1) {
+      this._verifyFromServer(token)      
     } else {
-      this._verifyFromServer(token)
+      this.getTokenFromServer()
     }
-    cb && cb()
   }
 
   // 从服务器获取Token
@@ -29,9 +32,15 @@ class Token {
             code: res.code
           },
           success(res) {
-            wx.setStorageSync('uid', res.data.data.uid)
-            wx.setStorageSync('token', res.data.data.token)
-            wx.setStorageSync('type', res.data.data.type)
+            if(res.statusCode  === 200){
+              // 处理用户已注册的情况
+              wx.setStorageSync('uid', res.data.data.uid)
+              wx.setStorageSync('token', res.data.data.token)
+              wx.setStorageSync('type', res.data.data.type)
+              wx.setStorageSync('status', res.data.data.status)
+            }else{
+              // 处理用户未注册的情况
+            }            
             cb && cb(res)
           }
         })
@@ -68,7 +77,7 @@ class Token {
           data: {
             code: res.code
           },
-          success(res) {
+          success(res) {            
             if (res.statusCode == 404) {
               // 处理用户未注册的情况
               wx.redirectTo({

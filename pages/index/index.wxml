@@ -1,4 +1,9 @@
-<view class="container">
+<view class='wait-container' wx:if="{{!isPass}}">
+  <image src='/images/theme/top_image.jpg' class='top-image'></image>
+  <text>请 耐 心 通 过 审 核 ~</text>
+</view>
+
+<view class="container" wx:else>
   <image src='/images/icon/setting.png' class='setting' bindtap='toSetting'></image>
   <image src='/images/theme/top_image.jpg' class='top-image'></image>
   <image src='/images/icon/bookmarks.png' class='bookmarks'></image>

@@ -9,8 +9,6 @@ Page({
     ],
     hasMore: [true, true],
     loadingHidden: false,
-    photoCount: 0,
-    loadedPhoto: 0,
     tabIndex: 0,
     page: [1, 1]
   },
@@ -40,14 +38,14 @@ Page({
         this.setData({
           goods: this.data.goods,
         })
-        cb && cb()
+        wx.stopPullDownRefresh()
       }, (res) => {
         this.data.hasMore[index] = false
         this.setData({
           goods: this.data.goods,
           loadingHidden: true
         })
-        cb && cb()
+        wx.stopPullDownRefresh()
       }) 
     }else{
       // 获取下架商品
@@ -56,14 +54,14 @@ Page({
         this.setData({
           goods: this.data.goods,
         })
-        cb && cb()
+        wx.stopPullDownRefresh()
       }, (res) => {
         this.data.hasMore[index] = false
         this.setData({
           goods: this.data.goods,
           loadingHidden: true
         })
-        cb && cb()
+        wx.stopPullDownRefresh()
       })
     }       
   },
@@ -110,7 +108,7 @@ Page({
 
   onPullDownRefresh() {
     this._reload(() => {
-      wx.stopPullDownRefresh()
+      
     })
   }
 })
