@@ -20,8 +20,7 @@ Page({
     this._loadGoods()     
   },
 
-  onShow(){
-    console.log(wx.getStorageSync('newGoods'))
+  onShow(){    
     if (wx.getStorageSync('newGoods')){
       this._reload()
       wx.setStorageSync('newGoods', false)
@@ -66,6 +65,7 @@ Page({
     }       
   },
 
+  // 滑到底部加载下一页
   onReachBottom(event){
     let index = this.data.tabIndex
     if (this.data.hasMore[index]) {
@@ -74,6 +74,7 @@ Page({
     }
   },
 
+  // 切换Tab栏
   switchTab(event) {
     let index = event.detail.index
     this.data.tabIndex = index
@@ -88,14 +89,14 @@ Page({
   },  
 
   // 恢复到初始状态
-  _reload(cb){ 
+  _reload(){ 
     this.data.page = [1, 1]
     this.data.hasMore = [true, true]
     this.data.goods = [
       [], []
     ]    
     
-    this._loadGoods(cb)    
+    this._loadGoods()    
   },
 
   //跳转到添加商品的页面
@@ -106,9 +107,8 @@ Page({
     })
   },
 
+  // 下拉刷新
   onPullDownRefresh() {
-    this._reload(() => {
-      
-    })
+    this._reload()
   }
 })

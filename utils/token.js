@@ -11,13 +11,8 @@ class Token {
   verify() {
     let token = wx.getStorageSync('token')
     let status = wx.getStorageSync('status')
-
-    // token不存在或者status不为1时，重新申请令牌
-    if (token && status === 1) {
-      this._verifyFromServer(token)      
-    } else {
-      this.getTokenFromServer()
-    }
+   
+    this.getTokenFromServer()
   }
 
   // 从服务器获取Token
@@ -34,7 +29,7 @@ class Token {
           success(res) {
             if(res.statusCode  === 200){
               // 处理用户已注册的情况
-              wx.setStorageSync('uid', res.data.data.uid)
+              wx.setStorageSync('uid', res.data.data.id)
               wx.setStorageSync('token', res.data.data.token)
               wx.setStorageSync('type', res.data.data.type)
               wx.setStorageSync('status', res.data.data.status)
@@ -46,25 +41,7 @@ class Token {
         })
       }
     })
-  }
-
-  // 验证Token是否有效
-  _verifyFromServer(token) {
-    let that = this
-    wx.request({
-      url: that.verifyUrl,
-      method: 'POST',
-      data: {
-        token: token
-      },
-      success(res) {
-        let valid = res.data.data.isValid
-        if (!valid) {
-          that.getTokenFromServer()
-        }
-      }
-    })
-  }
+  }  
 
   // 判断OpenID是否存在
   verifyOpenID() {

@@ -15,6 +15,9 @@ Page({
     // 根据缓存中有无token判断是申请还是修改信息
     if (wx.getStorageSync('token')) {
       title = '修 改 信 息'
+      if (options.type == 'shop') {
+        major = true
+      }
       register.getInfo((res) => {
         this.setData({
           info: res
@@ -41,7 +44,8 @@ Page({
     let url = ''
     
     if (wx.getStorageSync('token')){
-      if (wx.getStorageSync('type') == 'shop') {
+      // 处理修改信息的情况
+      if (wx.getStorageSync('type') === 'shop') {
         url = 'shop'
       } else {
         url = 'seller'
