@@ -62,6 +62,7 @@ Page({
           content: '修改商品信息成功',
           success() {
             wx.navigateBack({})
+            wx.setStorageSync('newGoods', true)
           },
           showCancel: false
         })

@@ -20,6 +20,7 @@ Page({
   },
 
   onShow(){
+    console.log(wx.getStorageSync('newGoods'))
     if (wx.getStorageSync('newGoods')){
       this._reload()
       wx.setStorageSync('newGoods', false)
