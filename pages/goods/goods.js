@@ -16,7 +16,8 @@ Page({
   },
 
   onLoad: function (options) {
-    this._loadGoods()    
+    this._loadGoods()
+    app.setLoadingHidden(this)    
   },
 
   onShow(){
@@ -81,9 +82,9 @@ Page({
     }
   },
 
-  isLoadAll(event) {
-    let that = this
-    app.isLoadAll(that)
+  // 判断图片是否全部加载
+  isLoadedAll() {    
+    app.isLoadedAll(this)
   },  
 
   // 恢复到初始状态
