@@ -1,6 +1,6 @@
 import {GoodsModel} from './goods-model.js'
+import {Image} from '../../utils/image.js'
 let goods = new GoodsModel()
-let app = getApp()
 
 Page({
   data: {
@@ -16,8 +16,10 @@ Page({
   },
 
   onLoad: function (options) {
-    this._loadGoods()
-    app.setLoadingHidden(this)    
+    this.image = new Image(this)
+    this.image.setLoadingHidden()   
+
+    this._loadGoods()     
   },
 
   onShow(){
@@ -33,7 +35,7 @@ Page({
     if(index == 0){
       // 获取在售商品
       goods.getGoods(this.data.page[index], (res) => {
-        this.data.photoCount += res.length
+        this.image.addPhotosCount(res.length)
         this.data.goods[index].push.apply(this.data.goods[index], res)
         this.setData({
           goods: this.data.goods,
@@ -84,7 +86,7 @@ Page({
 
   // 判断图片是否全部加载
   isLoadedAll() {    
-    app.isLoadedAll(this)
+    this.image.isLoadedAll()
   },  
 
   // 恢复到初始状态
