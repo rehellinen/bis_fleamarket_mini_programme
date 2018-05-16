@@ -7,21 +7,18 @@
   <view class='text-container'>
     <text>管 理 订 单</text>
   </view>
-  <switch-tab tab="{{['全部', '待付款', '待发货', '待收货', '已完成']}}" class="switch-tab" bind:switchTab="switchTab">
-    <view slot="全部">
-      <order-list order="{{order[0]}}" bind:loaded="isLoadedAll" bind:reload="reload"></order-list>
-    </view>
+  <switch-tab tab="{{['待付款', '待发货', '待收货', '已完成']}}" class="switch-tab" bind:switchTab="switchTab">    
     <view slot="待付款">
-      <order-list order="{{order[1]}}" bind:reload="reload"></order-list>
+      <order-list order="{{order[0]}}" bind:reload="reload"></order-list>
     </view>
     <view slot="待发货">
-      <order-list order="{{order[2]}}"></order-list>
+      <order-list order="{{order[1]}}"></order-list>
     </view>
     <view slot="待收货">
-      <order-list order="{{order[3]}}"></order-list>
+      <order-list order="{{order[2]}}"></order-list>
     </view>
     <view slot="已完成">
-      <order-list order="{{order[4]}}"></order-list>
+      <order-list order="{{order[3]}}"></order-list>
     </view>
   </switch-tab>
 </view>

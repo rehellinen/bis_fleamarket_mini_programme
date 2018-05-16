@@ -6,12 +6,12 @@ let app = getApp()
 Page({
   data: {
     order: [
-      [], [], [], [], []
+      [], [], [], []
     ],
-    hasMore: [true, true, true, true, true],
+    hasMore: [true, true, true, true],
     loadingHidden: false,
     tabIndex: 0,
-    page: [1, 1, 1, 1, 1]
+    page: [1, 1, 1, 1]
   },
 
   onLoad: function (options) {    
@@ -36,36 +36,44 @@ Page({
     }
   },
 
-  reload(cb) {
+  reload() {
     this.data.order = [
-      [], [], [], [], []
+      [], [], [], []
     ],
-    this.data.hasMore = [true, true, true, true, true],
-    this.data.page = [1, 1, 1, 1, 1]
+    this.data.hasMore = [true, true, true, true],
+    this.data.page = [1, 1, 1, 1]
 
-    this._loadOrder(cb)    
+    this._loadOrder()    
   },
   
-  _loadOrder(cb) {
+  _loadOrder() {
+    let status
     let index = this.data.tabIndex
-    let status = index
-    if(index == 4){
+    
+    if(index === 0){
+      status = 1
+    }else if(index === 1){
+      status = 2
+    }else if(index === 2){
+      status = 3
+    }else if(index === 3){
       status = -2
     }
+    console.log(index)
     order.getOrder(status, this.data.page[index], (res) => {
       this.image.addPhotosCount(res.length)
       this.data.order[index].push.apply(this.data.order[index], res)
       this.setData({
         order: this.data.order
       })
-      cb && cb()
+      wx.stopPullDownRefresh()
     }, (res) => {
       this.data.hasMore[index] = false
       this.setData({
         order: this.data.order,
         loadingHidden: true
       })
-      cb && cb()
+      wx.stopPullDownRefresh()
     })
   },
 
@@ -82,8 +90,6 @@ Page({
   },
 
   onPullDownRefresh() {
-    this.reload(() => {
-      wx.stopPullDownRefresh()
-    })
+    this.reload()
   }
 })

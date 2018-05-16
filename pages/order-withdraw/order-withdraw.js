@@ -22,7 +22,7 @@ Page({
     }
   },
 
-  _loadOrder(cb) {
+  _loadOrder() {
     let index = this.data.tabIndex
     let status = index
     if (index == 0) {
@@ -40,25 +40,25 @@ Page({
       this.setData({
         order: this.data.order
       })
-      cb && cb()
+      wx.stopPullDownRefresh()
     }, (res) => {
       this.data.hasMore[index] = false
       this.setData({
         order: this.data.order,
         loadingHidden: true
       })
-      cb && cb()
+      wx.stopPullDownRefresh()
     })
   },
 
-  reload(cb) {
+  reload() {
     this.data.order = [
       [], [], [], [], []
     ]
     this.data.hasMore = [true, true, true, true, true]
     this.data.page = [1, 1, 1, 1, 1]
 
-    this._loadOrder(cb)
+    this._loadOrder()
   },
 
   switchTab(event) {
@@ -78,8 +78,6 @@ Page({
   },
 
   onPullDownRefresh() {
-    this.reload(() => {
-      wx.stopPullDownRefresh()
-    })
+    this.reload()
   }
 })
