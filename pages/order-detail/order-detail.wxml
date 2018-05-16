@@ -9,7 +9,7 @@
   name="{{order.buyer_id.name}}">
   </seller-info>
 
-  <order-goods-list goods="{{order.snap_items}}" bind:loaded="isLoadAll"></order-goods-list>
+  <order-goods-list goods="{{order.snap_items}}" bind:loaded="isLoadedAll"></order-goods-list>
 
   <!--结算-->
   <view class="order-accounts">

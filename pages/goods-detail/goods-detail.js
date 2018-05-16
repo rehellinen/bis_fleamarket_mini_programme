@@ -12,6 +12,8 @@ Page({
     if(wx.getStorageSync('type') == 'shop'){
       url = 'newGoods/'
     }
+
+    // id为0表示修改
     if(id != 0){
       // 加载数据
       goods.getGoodsDetail(url + id, (res) => {

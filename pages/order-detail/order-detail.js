@@ -1,32 +1,24 @@
 import { OrderModel } from '../order/order-model.js'
+import { Image } from '../../utils/image.js'
 let order = new OrderModel()
-let app = getApp()
 
 Page({
   data: {
     loadingHidden: false,
-    photoCount: 0,
-    loadedPhoto: 0
   },
 
   onLoad: function (options) {
     let id = options.id
     let type = options.type
+    this.image = new Image(this)
+    this.image.setLoadingHidden()  
+
     order.getOrderByID(id, type, (res) => {
-      this.data.photoCount += res.snap_items.length
-      if (type == 1) {
-        res.seller = res.shop
-      }
+      this.image.addPhotosCount(res.snap_items.length)
       this.setData({
         order: res
       })
     })
-
-    setTimeout(() => {
-      this.setData({
-        loadingHidden: true
-      })
-    }, 5000)
   },
 
   deliver(event) {
@@ -51,8 +43,7 @@ Page({
     })
   },
 
-  isLoadAll(event) {
-    let that = this
-    app.isLoadAll(that)
+  isLoadedAll(event) {
+    this.image.isLoadedAll()
   }
 })

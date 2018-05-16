@@ -1,4 +1,5 @@
 import { OrderModel } from '../order/order-model.js'
+import { Image } from '../../utils/image.js'
 let order = new OrderModel()
 let app = getApp()
 
@@ -9,19 +10,15 @@ Page({
     ],
     hasMore: [true, true, true, true, true],
     loadingHidden: false,
-    photoCount: 0,
-    loadedPhoto: 0,
     tabIndex: 0,
     page: [1, 1, 1, 1, 1]
   },
 
-  onLoad: function (options) {
+  onLoad: function (options) {    
+    this.image = new Image(this)
+    this.image.setLoadingHidden()   
+
     this._loadOrder()
-    setTimeout(() => {
-      this.setData({
-        loadingHidden: true
-      })
-    }, 5000)
   },
 
   onShow(){
@@ -56,7 +53,7 @@ Page({
       status = -2
     }
     order.getOrder(status, this.data.page[index], (res) => {
-      this.data.photoCount += res.length
+      this.image.addPhotosCount(res.length)
       this.data.order[index].push.apply(this.data.order[index], res)
       this.setData({
         order: this.data.order
@@ -72,9 +69,8 @@ Page({
     })
   },
 
-  isLoadAll(event) {
-    let that = this
-    app.isLoadAll(that)
+  isLoadedAll(event) {
+    this.image.isLoadedAll()
   },
 
   switchTab(event) {
