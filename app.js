@@ -6,6 +6,6 @@ App({
     // 检验openID是否存在
     token.verifyOpenID()
     // 检验Token令牌
-    token.verify()
+    token.getTokenFromServer()
   }
 })

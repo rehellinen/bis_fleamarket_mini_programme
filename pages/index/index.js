@@ -1,3 +1,6 @@
+import {Token} from '../../utils/token.js'
+let token = new Token()
+
 Page({
   data: {
     isPass: false
@@ -5,14 +8,7 @@ Page({
 
   onLoad: function (options) {
     let type = wx.getStorageSync('type')
-    let status = wx.getStorageSync('status')
-
-    // 判断商家是否通过审核
-    if(status === 1){
-      this.setData({
-        isPass: true
-      })
-    }
+    this.isPass()
     this.setData({
       type: type
     })
@@ -48,4 +44,21 @@ Page({
       url: '/pages/decoration/decoration',
     })
   },
+
+  fresh(){
+    token.getTokenFromServer( (res) => {
+      this.isPass()
+    })
+  },
+
+  isPass(){
+    let status = wx.getStorageSync('status')
+
+    // 判断商家是否通过审核
+    if (status === 1) {
+      this.setData({
+        isPass: true
+      })
+    }    
+  }
 })

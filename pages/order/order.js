@@ -59,7 +59,7 @@ Page({
     }else if(index === 3){
       status = -2
     }
-    console.log(index)
+
     order.getOrder(status, this.data.page[index], (res) => {
       this.image.addPhotosCount(res.length)
       this.data.order[index].push.apply(this.data.order[index], res)

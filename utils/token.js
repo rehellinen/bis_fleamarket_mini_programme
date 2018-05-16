@@ -7,14 +7,6 @@ class Token {
     this.openidUrl = Config.restUrl + 'token/openid'
   }
 
-  // 检验Token令牌主方法
-  verify() {
-    let token = wx.getStorageSync('token')
-    let status = wx.getStorageSync('status')
-   
-    this.getTokenFromServer()
-  }
-
   // 从服务器获取Token
   getTokenFromServer(cb) {
     let that = this

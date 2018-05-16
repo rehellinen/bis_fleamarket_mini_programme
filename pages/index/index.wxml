@@ -1,6 +1,7 @@
 <view class='wait-container' wx:if="{{!isPass}}">
   <image src='/images/theme/top_image.jpg' class='top-image'></image>
   <text>请 耐 心 通 过 审 核 ~</text>
+  <button class='fresh-button' bindtap='fresh'>更 新 审 核 状 态</button>
 </view>
 
 <view class="container" wx:else>

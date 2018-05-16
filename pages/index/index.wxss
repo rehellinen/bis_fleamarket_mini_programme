@@ -10,6 +10,12 @@
   color: #989898;
 }
 
+.fresh-button{
+  width: 550rpx;
+  color: #989898;
+  margin-top: 50rpx;
+}
+
 .container{
   background-color: rgb(248, 246, 247);
   min-height: 100vh;
