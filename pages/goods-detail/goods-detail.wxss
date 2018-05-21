@@ -30,9 +30,16 @@ form {
 .section text {
   font-size: 28rpx;
   color: #7c7c7c;
+  width: 120rpx;
 }
 
 .section input {
+  font-size: 28rpx;
+  color: #7c7c7c;
+  padding: 20rpx 0;
+}
+
+.section picker {
   font-size: 28rpx;
   color: #7c7c7c;
   padding: 20rpx 0;

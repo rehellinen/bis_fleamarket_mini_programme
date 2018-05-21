@@ -1,6 +1,8 @@
 import {GoodsModel} from '../../model/GoodsModel.js'
+import {ThemeModel} from "../../model/ThemeModel"
 
 let goods = new GoodsModel()
+let theme = new ThemeModel()
 
 Page({
     data: {
@@ -13,13 +15,14 @@ Page({
     },
 
     _loadData() {
-        let url = 'oldGoods/'
-        if (wx.getStorageSync('type') == 'shop') {
-            url = 'newGoods/'
-        }
-        // id为0表示添加
+        // 加载商品数据
+        // id为0代表新增商品
         if (this.data.id != 0) {
-            // 加载数据
+            let url = 'oldGoods/'
+            if (wx.getStorageSync('type') == 'shop') {
+                url = 'newGoods/'
+            }
+
             goods.getGoodsDetail(url + this.data.id, (res) => {
                 this.setData({
                     id: id,
@@ -29,6 +32,36 @@ Page({
                 })
             })
         }
+
+        theme.getThemes( (res) => {
+            // 保存theme原始变量
+            this.theme = res
+            // 创建picker可用的数组
+            let themeNameArr = []
+            for(let item of res){
+                themeNameArr.push(item.name)
+            }
+            this.setData({
+                theme: themeNameArr
+            })
+        })
+    },
+
+    themePicker(event){
+        let index = event.detail.value
+        let value = this.data.theme[index]
+        let selectedThemeID = this._getIDByValue(this.theme, value)
+        console.log(selectedThemeID)
+    },
+
+    _getIDByValue(obj, value){
+        let id = -1
+        for(let item of obj){
+            if(item.name === value){
+                id = item.id
+            }
+        }
+        return id
     },
 
     // 上传图片
