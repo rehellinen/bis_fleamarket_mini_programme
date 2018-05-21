@@ -26,6 +26,11 @@
     </view>
 
     <view class="section">
+      <text>主题：</text>
+      <picker mode="selector" range="{{theme}}"></picker>
+    </view>
+
+    <view class="section">
       <text class='major-text'>描述：</text>
       <textarea name="description" value='{{info.description}}'/>
     </view>   
