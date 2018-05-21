@@ -1,4 +1,4 @@
-import { RegisterModel } from './register-model.js'
+import { RegisterModel } from '../../model/VendorModel.js'
 let register = new RegisterModel()
 
 Page({

@@ -1,4 +1,4 @@
-import { GoodsModel } from '../../goods/goods-model.js'
+import { GoodsModel } from '../../../model/GoodsModel.js'
 let goods = new GoodsModel()
 
 Component({

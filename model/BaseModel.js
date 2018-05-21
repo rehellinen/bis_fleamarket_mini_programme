@@ -1,7 +1,7 @@
-import { Config } from 'config.js'
-import { Token } from './token.js'
+import { Config } from '../utils/config'
+import { Token } from '../utils/token.js'
 
-class Base {
+export class BaseModel {
   constructor() {
     "use strict"
     this.baseUrl = Config.restUrl
@@ -59,5 +59,3 @@ class Base {
     })
   }
 }
-
-export { Base }

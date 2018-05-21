@@ -1,4 +1,4 @@
-import {GoodsModel} from './goods-model.js'
+import {GoodsModel} from '../../model/GoodsModel.js'
 import {Image} from '../../utils/image.js'
 let goods = new GoodsModel()
 

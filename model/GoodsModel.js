@@ -1,6 +1,6 @@
-import { Base } from '../../utils/base.js'
+import { BaseModel } from './BaseModel.js'
 
-class GoodsModel extends Base {
+class GoodsModel extends BaseModel {
   constructor() {
     super()
   }
