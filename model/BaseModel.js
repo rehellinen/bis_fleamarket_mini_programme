@@ -3,7 +3,6 @@ import { Token } from '../utils/token.js'
 
 export class BaseModel {
   constructor() {
-    "use strict"
     this.baseUrl = Config.restUrl
   }
 
