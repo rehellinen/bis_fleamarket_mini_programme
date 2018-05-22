@@ -6,7 +6,9 @@ let theme = new ThemeModel()
 
 Page({
     data: {
-        imageUrl: ''
+        imageUrl: '',
+        themeText: '--- 点击选择主题 ---',
+        categoryText: '--- 请先选择主题 ---'
     },
 
     onLoad: function (options) {
@@ -17,6 +19,7 @@ Page({
     _loadData() {
         // 加载商品数据
         // id为0代表新增商品
+        console.log(this.data.id)
         if (this.data.id != 0) {
             let url = 'oldGoods/'
             if (wx.getStorageSync('type') == 'shop') {
@@ -25,10 +28,12 @@ Page({
 
             goods.getGoodsDetail(url + this.data.id, (res) => {
                 this.setData({
-                    id: id,
+                    id: res.id,
                     info: res,
                     imageUrl: res.image_id.image_url,
-                    imageID: res.image_id.id
+                    imageID: res.image_id.id,
+                    categoryText: res.category_id.name,
+                    themeText: res.category_id.theme_id.name
                 })
             })
         }
@@ -51,7 +56,35 @@ Page({
         let index = event.detail.value
         let value = this.data.theme[index]
         let selectedThemeID = this._getIDByValue(this.theme, value)
-        console.log(selectedThemeID)
+
+        // 获取主题对应的分类
+        theme.getCategories(selectedThemeID, (res) => {
+            // 保存theme原始变量
+            this.category = res
+            // 创建picker可用的数组
+            let categoryNameArr = []
+            for(let item of res){
+                categoryNameArr.push(item.name)
+            }
+            this.setData({
+                category: categoryNameArr
+            })
+        })
+
+        this.setData({
+            themeText: value
+        })
+    },
+
+    categoryPicker(event){
+        let index = event.detail.value
+        let value = this.data.category[index]
+        let selectedCategoryID = this._getIDByValue(this.category, value)
+
+        this.categoryID = selectedCategoryID
+        this.setData({
+            categoryText: value
+        })
     },
 
     _getIDByValue(obj, value){
@@ -93,6 +126,7 @@ Page({
     submit(event) {
         let data = event.detail.value
         data.image_id = this.data.imageID
+        data.category_id = this.categoryID
 
         if (this.data.id) {
             // 修改商品信息
