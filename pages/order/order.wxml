@@ -9,7 +9,7 @@
   </view>
   <switch-tab tab="{{['待付款', '待发货', '待收货', '已完成']}}" class="switch-tab" bind:switchTab="switchTab">    
     <view slot="待付款">
-      <order-list order="{{order[0]}}" bind:reload="reload"></order-list>
+      <order-list order="{{order[0]}}" bind:reload="reload" bind:loaded="isLoadedAll"></order-list>
     </view>
     <view slot="待发货">
       <order-list order="{{order[1]}}"></order-list>

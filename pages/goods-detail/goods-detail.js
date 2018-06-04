@@ -19,7 +19,6 @@ Page({
     _loadData() {
         // 加载商品数据
         // id为0代表新增商品
-        console.log(this.data.id)
         if (this.data.id != 0) {
             let url = 'oldGoods/'
             if (wx.getStorageSync('type') == 'shop') {
@@ -27,6 +26,8 @@ Page({
             }
 
             goods.getGoodsDetail(url + this.data.id, (res) => {
+                this._loadCategory(res.category_id.theme_id.id)
+                this.categoryID = res.category_id.id
                 this.setData({
                     id: res.id,
                     info: res,
@@ -57,8 +58,17 @@ Page({
         let value = this.data.theme[index]
         let selectedThemeID = this._getIDByValue(this.theme, value)
 
+        this._loadCategory(selectedThemeID)
+
+        this.setData({
+            themeText: value,
+            themeValue: value
+        })
+    },
+
+    _loadCategory(id){
         // 获取主题对应的分类
-        theme.getCategories(selectedThemeID, (res) => {
+        theme.getCategories(id, (res) => {
             // 保存theme原始变量
             this.category = res
             // 创建picker可用的数组
@@ -70,10 +80,6 @@ Page({
                 category: categoryNameArr
             })
         })
-
-        this.setData({
-            themeText: value
-        })
     },
 
     categoryPicker(event){
@@ -83,7 +89,8 @@ Page({
 
         this.categoryID = selectedCategoryID
         this.setData({
-            categoryText: value
+            categoryText: value,
+            categoryValue: value
         })
     },
 
@@ -128,7 +135,7 @@ Page({
         data.image_id = this.data.imageID
         data.category_id = this.categoryID
 
-        if (this.data.id) {
+        if (this.data.id !=0) {
             // 修改商品信息
             data.id = this.data.id
             goods.editGoods(data, (res) => {

@@ -27,12 +27,12 @@
 
     <view class="section">
       <text>主题：</text>
-      <picker mode="selector" range="{{theme}}" bindchange="themePicker">{{themeText}}</picker>
+      <picker mode="selector" range="{{theme}}" bindchange="themePicker" value="{{themeValue}}">{{themeText}}</picker>
     </view>
 
     <view class="section">
       <text>分类：</text>
-      <picker mode="selector" range="{{category}}" bindchange="categoryPicker">{{categoryText}}</picker>
+      <picker mode="selector" range="{{category}}" bindchange="categoryPicker" value="{{categoryValue}}">{{categoryText}}</picker>
     </view>
 
     <view class="section">

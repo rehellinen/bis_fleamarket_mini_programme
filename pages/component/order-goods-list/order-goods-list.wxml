@@ -16,9 +16,8 @@
         </view>
 
         <view class='item-down'>
-          <view class="section">
-            <input wx:if="{{!type}}" disabled='{{true}}'/>
-             <text class='remark-text' wx:else>{{item.remark}}</text>
+          <view class="section">            
+             <text class='remark-text'>{{item.remark}}</text>
           </view>
         </view>
 

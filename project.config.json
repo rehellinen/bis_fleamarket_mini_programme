@@ -94,7 +94,7 @@
 					"id": 10,
 					"name": "goods-detail",
 					"pathName": "pages/goods-detail/goods-detail",
-					"query": ""
+					"query": "id=557"
 				},
 				{
 					"id": -1,
