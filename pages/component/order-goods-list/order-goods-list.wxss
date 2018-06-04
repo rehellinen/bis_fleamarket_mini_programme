@@ -69,5 +69,5 @@
   width:430rpx;
   word-break:break-all;
   border-bottom: 1rpx solid #e9e9e9;
-  padding-bottom: 5rpx;
+  padding-bottom: 10rpx;
 }

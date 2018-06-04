@@ -8,6 +8,10 @@
       <image class="icon" src='/images/icon/phone.png'></image>
       <text class="info">电话 : {{phone}}</text>
     </view>
+    <view class='icon-info'>
+      <image class="icon" src='/images/icon/dormitory.png'></image>
+      <text class="info">宿舍 : {{dormitory}}</text>
+    </view>
   </view>
   <view class='avatar-container'>
     <image src='{{image}}' wx:if="{{image}}"></image>

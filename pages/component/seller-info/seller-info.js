@@ -4,6 +4,7 @@ Component({
     wechat: String,
     phone: String,
     name: String,
+    dormitory: String,
     image: {
       type: String,
       value: null
